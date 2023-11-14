@@ -9,5 +9,9 @@ NOTRE MAGINIFIQUE TP SYSTEME AVEC ELOISE, TOM ET LUCAS.
   TPSYSTEMES.sln, fichier de la solution du projet qui  permet son fonctionnement
 
 * ./TPSYSTEMES
-    *.cpp* -> fichier de déclaration de la classe X
-    *.h* -> fichier d'entête de la classe X
+    *.cpp* -> fichier de déclaration de la classe x
+    *.h* -> fichier d'entête de la classe x
+    *main.cpp* -> fichier principal
+    *TPSYSTEMES.vcxproj.filters* -> fichier de configuration de la solution
+    *TPSYSTEMES.vcxproj* -> fichier de configuration de la solution
+    *TPSYSTEMES.vcxproj.user -> fichier de configuration de la solution
