@@ -1,5 +1,17 @@
 #pragma once
 
+//*********************************************************************************************
+//* Programme : QtDMX.h                                                 Date : 17/11/2023
+//*--------------------------------------------------------------------------------------------
+//* Dernière mise à jour : 17/11/2023
+//*
+//* Programmeurs : Quentin POLLET                                             Classe : BTSSN2
+//*                
+//*--------------------------------------------------------------------------------------------
+//* But : Créer la classe QtDMX et déclarer les méthodes / constructeur / desctructeur de celle-ci
+//* Programmes associés : DashHard.h | PilotageLumiere.h
+//*********************************************************************************************
+
 #include <iostream>
 #include <vector>
 

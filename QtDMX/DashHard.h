@@ -1,6 +1,19 @@
 #ifndef DASHARD_H
 #define DASHARD_H
 
+//*********************************************************************************************
+//* Programme : DashHard.h                                                 Date : 17/11/2023
+//*--------------------------------------------------------------------------------------------
+//* Dernière mise à jour : 17/11/2023
+//*
+//* Programmeurs : Quentin POLLET                                             Classe : BTSSN2
+//*                
+//*--------------------------------------------------------------------------------------------
+//* But : Définir les différents options/actions proposer par la bibliothéque DashHard pour les faire fonctionner avec la dll 
+//* Programmes associés : Aucun
+//*********************************************************************************************
+
+
 #define DHC_SIUDI0				0		// COMMAND
 #define DHC_SIUDI1				100		// COMMAND
 #define DHC_SIUDI2				200		// COMMAND

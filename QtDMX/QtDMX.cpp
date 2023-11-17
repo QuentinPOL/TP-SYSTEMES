@@ -1,5 +1,23 @@
+//*********************************************************************************************
+//* Programme : QtDMX.cpp                                                 Date : 17/11/2023
+//*--------------------------------------------------------------------------------------------
+//* Dernière mise à jour : 17/11/2023
+//*
+//* Programmeurs : Quentin POLLET                                             Classe : BTSSN2
+//*                
+//*--------------------------------------------------------------------------------------------
+//* But : Faire l'implémentation des méthodes / constructeur / constructeur de celle-ci
+//* Programmes associés : QtDMX.h (fichier entête de la classe QtDMX)
+//*********************************************************************************************
+
 #include "QtDMX.h"
 
+//---------------------------------------------------------------------------------------------
+//* Constructeur de la classe QtDMX qui est l'ihm du programme -> cela regroupe le chargement de la DLL 
+// L'initlisation de l'interface ainsi que le module pour envoyer des trames DMX grâce à des commandes
+// Création de l'objet PilotageLumiere qui va permettre  de piloter le changement des couleurs des lumières
+// initialisation des 512 blocks de la trame DMX et création du timer pour l'envoie de trame régulier (50 ms)
+//-------------------------------------------------------------------------------------------
 QtDMX::QtDMX(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -32,6 +50,10 @@ QtDMX::QtDMX(QWidget *parent)
 	timer.start(50); // on envoie toutes les 50 ms une trame
 }
 
+//---------------------------------------------------------------------------------------------
+//* Destructeur de la classe de l'ihm QtDMX qui ferme la connexion ainsi que libére la librairie DLL
+//---------------------------------------------------------------------------------------------
+
 QtDMX::~QtDMX()
 {
 	//Fermeture du DMX à l'arret du programme
@@ -43,31 +65,62 @@ QtDMX::~QtDMX()
 		FreeLibrary(g_dasusbdll);
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui affiche la valeur de l'adresse de la lumière du slider dans le label
+//* Paramètres :
+//*  - int value : variable qui à la valeur du slider de l'adresse de la lumière
+//---------------------------------------------------------------------------------------------
 void QtDMX::onSliderValueChanged(int value)
 {
 	ui.labelLampValue->setText(QString::number(value));
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui affiche la valeur de la couleur rouge du slider dans le label
+//* Paramètres :
+//*  - int value : variable qui à la valeur du slider de la couleur rouge
+//---------------------------------------------------------------------------------------------
 void QtDMX::onSliderColorRedChanged(int value)
 {
 	ui.labelValueRed->setText(QString::number(value));
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui affiche la valeur de la couleur verte du slider dans le label
+//* Paramètres :
+//*  - int value : variable qui à la valeur du slider de la couleur verte
+//---------------------------------------------------------------------------------------------
 void QtDMX::onSliderColorGreenChanged(int value)
 {
 	ui.labelValueGreen->setText(QString::number(value));
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui affiche la valeur de la couleur blueue du slider dans le label
+//* Paramètres :
+//*  - int value : variable qui à la valeur du slider de la couleur blueue
+//---------------------------------------------------------------------------------------------
 void QtDMX::onSliderColorBlueChanged(int value)
 {
 	ui.labelValueBlue->setText(QString::number(value));
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui affiche la valeur de la couleur blanche du slider dans le label
+//* Paramètres :
+//*  - int value : variable qui à la valeur du slider de la couleur blanche
+//---------------------------------------------------------------------------------------------
 void QtDMX::onSliderColorWhiteChanged(int value)
 {
 	ui.labelValueWhite->setText(QString::number(value));
 }
 
+//---------------------------------------------------------------------------------------------
+//* Fonction qui envoie une trame si l'interface est ouverte et donc que la libraire DLL est chargée
+// Ainsi que récupération de la valeure du mode DMX / numéro d'adresse de la lumière selectionné et des couleurs sélectionnées
+// Enfin on fait le changement de couleur de la lumière en question sélectionner dans numAdressLum en appelant la méthode setColor de la classe  piloteLum
+// Mais on va vérifier avant si la checkbox est coché ou non  pour faire un défilement automatique des couleurs et ensuite une fois qu'on à fait tout cela on envoie la trame DMX
+//---------------------------------------------------------------------------------------------
 void QtDMX::sendTrame()
 {
 	if (interface_open > 0)
