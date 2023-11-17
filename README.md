@@ -6,6 +6,7 @@ NOTRE MAGINIFIQUE TP SYSTEME AVEC ELOISE, TOM ET LUCAS.
 ## 1) ORGANISATION DU CODE
 
 * ./QtDMX
+  
     *QtDMX.cpp* -> fichier de déclaration de la classe QtDMX
   
     *QtDMX.h* -> fichier d'entête de la classe QtDMX
