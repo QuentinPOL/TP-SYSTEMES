@@ -1,30 +1,23 @@
 #pragma once
 
 //*********************************************************************************************
-//* Programme : QtDMX.h                                                 Date : 17/11/2023
+//* Programme : QtDMX.h                                                 Date : 01/12/2023
 //*--------------------------------------------------------------------------------------------
-//* Dernière mise à jour : 17/11/2023
+//* Dernière mise à jour : 01/12/2023
 //*
 //* Programmeurs : Quentin POLLET                                             Classe : BTSSN2
 //*                
 //*--------------------------------------------------------------------------------------------
 //* But : Créer la classe QtDMX et déclarer les méthodes / constructeur / desctructeur de celle-ci
-//* Programmes associés : DashHard.h | PilotageLumiere.h
+//* Programmes associés : PilotageLumiere.h
 //*********************************************************************************************
-
-#include <iostream>
-#include <vector>
 
 #include <QtWidgets/QMainWindow>
 #include <QTimer>
 #include <QDateTime>
 
 #include "ui_QtDMX.h"
-#include <Windows.h>
-#include "DashHard.h"
 #include "PilotageLumiere.h"
-
-#define DMX_MAXCHANNEL 512
 
 class QtDMX : public QMainWindow
 {
@@ -34,15 +27,7 @@ public:
     QtDMX(QWidget *parent = nullptr);
     ~QtDMX();
 
-    HINSTANCE g_dasusbdll;
-    typedef int (*DASHARDCOMMAND)(int, int, unsigned char*);
-    DASHARDCOMMAND DasUsbCommand;
-
-    int interface_open;
-    unsigned char dmxBlock[512];
-
     PilotageLumiere* piloteLum;
-
     QTimer timer;  // Déclarer le QTimer comme un membre de la classe
 private:
     Ui::QtDMXClass ui;
@@ -55,5 +40,5 @@ public slots:
     void onSliderColorBlueChanged(int value); // Valeur decimal de la couleur bleu
     void onSliderColorWhiteChanged(int value); // Valeur decimal de la couleur blanche
 
-    void sendTrame(); // Envoie d'une trame
+    void sendTrame();
 };
